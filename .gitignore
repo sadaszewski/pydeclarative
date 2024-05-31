@@ -2,3 +2,10 @@ __pycache__
 *.pyc
 /python-env/
 *.egg-info
+node_modules/
+.mypy_cache/
+.pytest_cache/
+.coverage
+/notebooks/*.html
+/notebooks/*_files
+.~lock.*

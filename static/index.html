@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="node_modules/datatables.net-dt/css/dataTables.dataTables.min.css" charset="utf-8" />
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="node_modules/datatables.net/js/dataTables.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="node_modules/datatables.net-dt/js/dataTables.dataTables.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="node_modules/plotly.js-dist-min/plotly.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="node_modules/js-base64/base64.js"></script>
+  <script type="text/javascript">
+    var websocket
+    window.PYDECLARATIVE = {
+      domToBackendMessageCounter: 0,
+      globalMessageHandlers: {
+        'execute_js': [
+          function(ev) {
+            // console.log('execute_js()')
+            eval(ev.js)
+          }
+        ],
+        'backend_exception': [
+          function(ev) {
+            console.log('Backend exception: ' + ev.exception)
+          }
+        ]
+      },
+      valueChanged: function(source, sourceProperty, targetProperty) {
+        sourceProperty = sourceProperty || 'value'
+        targetProperty = targetProperty || 'value'
+        // console.log('valueChanged() ' + source.id + ' ' + source[sourceProperty])
+        window.PYDECLARATIVE.domToBackendMessageCounter += 1
+        $(source).data('dom-to-backend-message-counter-for-field-' + sourceProperty,
+          window.PYDECLARATIVE.domToBackendMessageCounter)
+        websocket.send(JSON.stringify({
+          event: 'value_changed',
+          uuid: source.id,
+          property_name: targetProperty,
+          new_value: source.value,
+          dom_to_backend_message_counter: window.PYDECLARATIVE.domToBackendMessageCounter }))
+      },
+      nativeEvent: function(source, eventName) {
+        window.PYDECLARATIVE.domToBackendMessageCounter += 1
+        websocket.send(JSON.stringify({
+          event: 'native_event',
+          event_name: eventName,
+          uuid: source.id,
+          dom_to_backend_message_counter: window.PYDECLARATIVE.domToBackendMessageCounter
+        }))
+      },
+      customEvent: function(ev) {
+        window.PYDECLARATIVE.domToBackendMessageCounter += 1
+        ev = Object.assign({}, ev)
+        ev.dom_to_backend_message_counter = window.PYDECLARATIVE.domToBackendMessageCounter
+        websocket.send(JSON.stringify(ev))
+      },
+      applyDiff: function(el, diff, serial) {
+        for (var i = 0; i < diff.length; i++) {
+          if (diff[i].action === 'replace_element' && 'text' in diff[i]) {
+            el.textContent = diff[i].text
+          } else if (diff[i].action === 'replace_element' && 'html' in diff[i]) {
+            var replacement = $(diff[i].html)[0]
+            if (el.id) {
+              replacement.setAttribute('id', el.id)
+            }
+            el.replaceWith(replacement)
+          } else if (diff[i].action === 'set_attrs') {
+            for (var k in diff[i].attrs) {
+              var requiredSerial = $(el).data('dom-to-backend-message-counter-for-field-' + k)
+              if (!requiredSerial || serial > requiredSerial) {
+                el[k] = diff[i].attrs[k]
+                el.setAttribute(k, diff[i].attrs[k])
+              }
+            }
+          } else if (diff[i].action === 'remove_attrs') {
+            for (var k = 0; k < diff[i].attrs.length; k++) {
+              delete el[diff[i].attrs[k]]
+              el.removeAttribute(diff[i].attrs[k])
+            }
+          } else if (diff[i].action === 'remove_children') {
+            forRemoval = diff[i].indices.map(function(k) { return el.childNodes[k] })
+            for (var k = 0; k < forRemoval.length; k++) {
+              el.removeChild(forRemoval[k])
+            }
+          } else if (diff[i].action === 'add_child' && 'text' in diff[i]) {
+            var node = document.createTextNode(diff[i].text)
+            el.append(node)
+          } else if (diff[i].action === 'add_child' && 'html' in diff[i]) {
+            var node = $(diff[i].html)[0]
+            el.append(node)
+          } else if (diff[i].action === 'update_child') {
+            window.PYDECLARATIVE.applyDiff(el.childNodes[diff[i].index], diff[i].recipe)
+          }
+        }
+      },
+      addCustomMessageHandler: function(elem, messageType, handler) {
+        // console.log('addCustomMessageHandler() :: elem: ' + elem)
+        var handlerArray = $(elem).data('custom-message-handler-' + messageType)
+        if (!handlerArray) {
+          handlerArray = []
+          $(elem).data('custom-message-handler-' + messageType, handlerArray)
+        }
+        handlerArray.push(handler)
+      },
+      addGlobalMessageHandler: function(messageType, handler) {
+        var handlerArray = window.PYDECLARATIVE.globalMessageHandlers[messageType]
+        if (!handlerArray) {
+          handlerArray = []
+          window.PYDECLARATIVE.globalMessageHandlers[messageType] = handlerArray
+        }
+        handlerArray.push(handler)
+      }
+    }
+    function handleNodeCreated(ev) {
+      // console.log('handleNodeCreated() :: ' + JSON.stringify(ev))
+      var parent
+      var contentItem
+      if (ev.parent === null) {
+        parent = contentItem = $(document.body)
+      } else {
+        parent = $('#' + ev.parent)
+        contentItem = parent.attr('data-content-item') ? parent : parent.find('[data-content-item]')
+        contentItem = contentItem.length ? $(contentItem[0]) : parent
+      }
+      var node = $(ev.html)
+      node.attr('id', ev.uuid)
+      if (!contentItem) {
+        console.log('Warning: content item not found for ' + ev.uuid)
+      }
+      if (ev.index !== null && ev.index < contentItem[0].children.length) {
+        contentItem[0].insertBefore(node[0], contentItem[0].children[ev.index])
+      } else {
+        contentItem.append(node)
+      }
+    }
+    function handleHtmlChanged(ev) {
+      // console.log('handleHtmlChanged() :: ' + JSON.stringify(ev))
+      window.PYDECLARATIVE.applyDiff($('#' + ev.uuid)[0], ev.diff, ev.dom_to_backend_message_counter)
+    }
+    function handleNodeRemoved(ev) {
+      // console.log('handleNodeRemoved() :: ' + JSON.stringify(ev))
+      $('#' + ev.uuid).remove()
+    }
+    function handleGlobalMessage(ev) {
+      var handlers = window.PYDECLARATIVE.globalMessageHandlers[ev.message_type]
+      if (!handlers)
+        return
+      for (var i = 0; i < handlers.length; i++) {
+        handlers[i](ev)
+      }
+    }
+    function handleCustomMessage(ev) {
+      if (!ev.uuid) {
+        handleGlobalMessage(ev)
+        return
+      }
+      var handlers = $('#' + ev.uuid).data('custom-message-handler-' + ev.message_type)
+      if (!handlers)
+        return
+      for (var i = 0; i < handlers.length; i++) {
+        handlers[i].apply($('#' + ev.uuid)[0], [ ev ])
+      }
+    }
+    function handleEvents(evList) {
+      for (var i = 0; i < evList.length; i++) {
+        var ev = evList[i]
+        if (ev.event === 'node_created') {
+          handleNodeCreated(ev)
+        } else if (ev.event === 'html_changed') {
+          handleHtmlChanged(ev)
+        } else if (ev.event === 'node_removed') {
+          handleNodeRemoved(ev)
+        } else if (ev.event == 'custom_message') {
+          handleCustomMessage(ev)
+        }
+      }
+    }
+    $(function() {
+      websocket = new WebSocket("ws://" + window.location.host + "/")
+      websocket.onmessage = msg => {
+        var ev = JSON.parse(msg.data)
+        handleEvents(ev)
+      }
+    })
+  </script>
+</head>
+<body>
+
+</body>
+</html>

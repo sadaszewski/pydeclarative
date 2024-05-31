@@ -1,0 +1,98 @@
+{"type": "ADD", "timestamp": "2024-03-23T07:33:42.874955", "description": "Implement loading node dynamically into a parent", "taskId": 1}
+{"type": "ADD", "timestamp": "2024-03-23T07:34:11.667074", "description": "Implement DeclarativeEngine.create_task()", "taskId": 2}
+{"type": "ADD", "timestamp": "2024-03-23T07:34:45.248968", "description": "Support for CSS classes and styles for widgets", "taskId": 3}
+{"type": "ADD", "timestamp": "2024-03-23T07:37:29.432266", "description": "Implement on_loaded() support", "taskId": 4}
+{"type": "ADD", "timestamp": "2024-03-23T07:39:00.386673", "description": "Change handler naming convention to on_*", "taskId": 5}
+{"type": "ADD", "timestamp": "2024-03-23T07:46:55.960263", "description": "Implement Repeater widget with delegate support", "taskId": 6}
+{"type": "FINISH", "timestamp": "2024-03-23T14:56:10.957919", "taskId": 3}
+{"type": "ADD", "timestamp": "2024-03-23T15:03:49.708794", "description": "Implement graceful shutdown of websocket connections", "taskId": 7}
+{"type": "ADD", "timestamp": "2024-03-24T08:05:38.516745", "description": "Separate out missing property dependencies", "taskId": 8}
+{"type": "ADD", "timestamp": "2024-03-24T09:51:08.632535", "description": "Remove dependency tracking", "taskId": 9}
+{"type": "FINISH", "timestamp": "2024-03-24T09:54:24.062068", "taskId": 8}
+{"type": "FINISH", "timestamp": "2024-03-24T17:20:26.840256", "taskId": 5}
+{"type": "ADD", "timestamp": "2024-03-24T17:31:13.679270", "description": "Implement on_unloaded() support", "taskId": 10}
+{"type": "FINISH", "timestamp": "2024-03-24T17:31:41.539613", "taskId": 4}
+{"type": "FINISH", "timestamp": "2024-03-24T21:18:00.695551", "taskId": 10}
+{"type": "FINISH", "timestamp": "2024-03-24T21:18:01.805623", "taskId": 1}
+{"type": "FINISH", "timestamp": "2024-03-25T19:45:30.694961", "taskId": 2}
+{"type": "FINISH", "timestamp": "2024-03-25T19:45:42.385683", "taskId": 7}
+{"type": "ADD", "timestamp": "2024-03-26T20:16:32.624505", "description": "Send messages to DOM, e.g. for the terminal", "taskId": 11}
+{"type": "FINISH", "timestamp": "2024-03-27T18:04:22.125603", "taskId": 11}
+{"type": "ADD", "timestamp": "2024-03-29T15:43:30.978813", "description": "Child insertion at any index not only at the end", "taskId": 12}
+{"type": "ADD", "timestamp": "2024-03-29T15:43:52.913828", "description": "Mutable static properties should be copied during loading to support e.g. signals", "taskId": 13}
+{"type": "ADD", "timestamp": "2024-03-29T17:56:48.060065", "description": "Something goes wrong when inserting to ListModel at position zero", "taskId": 14}
+{"type": "FINISH", "timestamp": "2024-03-29T22:07:36.921564", "taskId": 14}
+{"type": "ADD", "timestamp": "2024-03-29T22:19:54.749069", "description": "Switch attributes to properties in applyDiff", "taskId": 15}
+{"type": "ADD", "timestamp": "2024-03-30T13:11:23.596760", "description": "Removing an item from a ListModel should also re-index following ones", "taskId": 16}
+{"type": "FINISH", "timestamp": "2024-03-30T13:29:38.398361", "taskId": 15}
+{"type": "ADD", "timestamp": "2024-03-30T13:53:40.319952", "description": "Values changed in DOM should not be overriden by backend until backend processes the notification", "taskId": 17}
+{"type": "FINISH", "timestamp": "2024-03-30T13:53:49.514461", "taskId": 17}
+{"type": "ADD", "timestamp": "2024-03-30T14:13:29.979629", "description": "Implement delegate as decorator", "taskId": 18}
+{"type": "FINISH", "timestamp": "2024-03-30T14:15:05.116323", "taskId": 16}
+{"type": "FINISH", "timestamp": "2024-03-30T14:18:31.060334", "taskId": 18}
+{"type": "ADD", "timestamp": "2024-03-30T14:21:00.879027", "description": "Implement timer activation/deactivation", "taskId": 19}
+{"type": "ADD", "timestamp": "2024-03-30T17:20:40.417897", "description": "Assignment of static value should cancel binding", "taskId": 20}
+{"type": "ADD", "timestamp": "2024-03-30T17:20:46.629102", "description": "Assignment of binding should be possible", "taskId": 21}
+{"type": "FINISH", "timestamp": "2024-03-30T17:22:55.738966", "taskId": 13}
+{"type": "ADD", "timestamp": "2024-03-30T17:36:05.507739", "description": "When a dynamic property is needed it should be computed out of order", "taskId": 22}
+{"type": "FINISH", "timestamp": "2024-03-30T17:37:28.174991", "taskId": 19}
+{"type": "FINISH", "timestamp": "2024-03-30T21:12:06.187811", "taskId": 22}
+{"type": "ADD", "timestamp": "2024-03-30T21:25:54.817453", "description": "Use CSS grid for flow layout", "taskId": 23}
+{"type": "ADD", "timestamp": "2024-03-30T21:38:44.018499", "description": "I had the impression that the button was saying Stop timer but the timer was not running", "taskId": 24}
+{"type": "FINISH", "timestamp": "2024-03-30T21:54:39.772177", "taskId": 24}
+{"type": "ADD", "timestamp": "2024-03-30T22:01:37.205492", "description": "Stop timer button is not updated when placing an extra sleep, html_changed() slot seems not called", "taskId": 25}
+{"type": "FINISH", "timestamp": "2024-03-31T10:00:45.643024", "taskId": 25}
+{"type": "ADD", "timestamp": "2024-03-31T10:11:24.648635", "description": "Send and execute JS", "taskId": 26}
+{"type": "FINISH", "timestamp": "2024-03-31T10:27:52.829346", "taskId": 26}
+{"type": "FINISH", "timestamp": "2024-03-31T11:08:31.143486", "taskId": 23}
+{"type": "ADD", "timestamp": "2024-03-31T11:10:47.450704", "description": "Crash in the engine should cancel tasks", "taskId": 27}
+{"type": "FINISH", "timestamp": "2024-03-31T11:10:58.671092", "taskId": 6}
+{"type": "FINISH", "timestamp": "2024-03-31T11:11:02.780227", "taskId": 12}
+{"type": "FINISH", "timestamp": "2024-03-31T11:53:44.939230", "taskId": 27}
+{"type": "FINISH", "timestamp": "2024-03-31T12:30:08.888834", "taskId": 20}
+{"type": "FINISH", "timestamp": "2024-03-31T12:30:09.777476", "taskId": 21}
+{"type": "ADD", "timestamp": "2024-03-31T13:48:06.297261", "description": "Reset dependencies on binding re-assignment", "taskId": 28}
+{"type": "ADD", "timestamp": "2024-03-31T14:05:57.583600", "description": "Serve static files along with websockets", "taskId": 29}
+{"type": "FINISH", "timestamp": "2024-03-31T14:42:26.358700", "taskId": 29}
+{"type": "ADD", "timestamp": "2024-04-01T14:35:00.526128", "description": "Static and dynamic properties should use the same ordering mechanism as children", "taskId": 30}
+{"type": "ADD", "timestamp": "2024-04-01T15:24:04.264685", "description": "Static property with Binding assignment should be transformed into a dynamic property", "taskId": 31}
+{"type": "ADD", "timestamp": "2024-04-01T16:06:00.950369", "description": "model_data is None in message delegates in chat example", "taskId": 32}
+{"type": "ADD", "timestamp": "2024-04-01T16:06:19.446346", "description": "html update triggered by another client is not sent straight away to others connected in chat example", "taskId": 33}
+{"type": "ADD", "timestamp": "2024-04-01T16:11:03.894198", "description": "node_created() needs to be a queued signal as well", "taskId": 34}
+{"type": "ADD", "timestamp": "2024-04-01T16:17:08.259936", "description": "Properties passed to DeclarativeEngine.load() should be set before the call to init_members().", "taskId": 35}
+{"type": "ADD", "timestamp": "2024-04-01T16:28:37.928013", "description": "Remove the child_added() signal", "taskId": 36}
+{"type": "ADD", "timestamp": "2024-04-01T16:32:56.244558", "description": "Common queue for queued signals", "taskId": 37}
+{"type": "FINISH", "timestamp": "2024-04-01T16:40:00.952634", "taskId": 33}
+{"type": "FINISH", "timestamp": "2024-04-01T16:40:05.462214", "taskId": 34}
+{"type": "FINISH", "timestamp": "2024-04-01T16:40:09.329206", "taskId": 35}
+{"type": "ADD", "timestamp": "2024-04-01T16:55:17.930093", "description": "Need to disconnect signals to global objects on unload", "taskId": 38}
+{"type": "ADD", "timestamp": "2024-04-01T17:03:36.958847", "description": "Add on_ended signal to engine", "taskId": 39}
+{"type": "ADD", "timestamp": "2024-04-01T20:21:47.513399", "description": "Exceptions in on_unloaded() and other callbacks", "taskId": 40}
+{"type": "ADD", "timestamp": "2024-04-04T21:56:37.003592", "description": "The properties DefaultDict also increases ref count to Node", "taskId": 41}
+{"type": "ADD", "timestamp": "2024-04-05T17:44:27.884885", "description": "On unloading root_node is pushed to the node_removed signal queue", "taskId": 42}
+{"type": "ADD", "timestamp": "2024-04-05T17:50:52.604438", "description": "Connections and watchers in Signal need to be integrated into an IndirectWeakProxy object", "taskId": 43}
+{"type": "ADD", "timestamp": "2024-04-05T22:48:29.266169", "description": "Engine reference in scope should be weak", "taskId": 44}
+{"type": "ADD", "timestamp": "2024-04-05T22:48:43.576023", "description": "Node references in queued signals should be weak", "taskId": 45}
+{"type": "FINISH", "timestamp": "2024-04-06T10:31:43.920189", "taskId": 44}
+{"type": "FINISH", "timestamp": "2024-04-06T10:31:45.043100", "taskId": 45}
+{"type": "FINISH", "timestamp": "2024-04-06T11:04:04.655314", "taskId": 43}
+{"type": "FINISH", "timestamp": "2024-04-06T11:04:19.848938", "taskId": 42}
+{"type": "FINISH", "timestamp": "2024-04-06T11:04:22.735998", "taskId": 41}
+{"type": "FINISH", "timestamp": "2024-04-06T11:05:06.269207", "taskId": 32}
+{"type": "FINISH", "timestamp": "2024-04-06T11:05:30.950377", "taskId": 38}
+{"type": "CANCEL", "timestamp": "2024-04-06T11:05:41.460909", "taskId": 39}
+{"type": "FINISH", "timestamp": "2024-04-06T11:06:56.954627", "taskId": 31}
+{"type": "ADD", "timestamp": "2024-04-06T11:54:48.387499", "description": "Probably no way to make robust weak references in queued signals", "taskId": 46}
+{"type": "FINISH", "timestamp": "2024-04-06T14:04:15.288598", "taskId": 46}
+{"type": "CANCEL", "timestamp": "2024-04-06T14:59:32.595493", "taskId": 9}
+{"type": "FINISH", "timestamp": "2024-04-06T14:59:43.284824", "taskId": 28}
+{"type": "FINISH", "timestamp": "2024-04-06T15:38:02.174446", "taskId": 40}
+{"type": "FINISH", "timestamp": "2024-04-06T15:39:18.352590", "taskId": 36}
+{"type": "ADD", "timestamp": "2024-04-06T17:55:56.606756", "description": "checkids are slow and probably need to be cached", "taskId": 47}
+{"type": "FINISH", "timestamp": "2024-04-06T18:08:48.487806", "taskId": 47}
+{"type": "ADD", "timestamp": "2024-04-06T21:59:13.527828", "description": "Need an on_*_about_to_change() event to ensure DataTable destruction before table update.", "taskId": 48}
+{"type": "FINISH", "timestamp": "2024-04-07T17:39:05.982177", "taskId": 37}
+{"type": "CANCEL", "timestamp": "2024-04-07T17:39:08.832899", "taskId": 48}
+{"type": "ADD", "timestamp": "2024-04-12T17:22:16.535977", "description": "Popups", "taskId": 49}
+{"type": "FINISH", "timestamp": "2024-04-19T18:47:13.759657", "taskId": 49}
+{"type": "CANCEL", "timestamp": "2024-04-19T18:47:24.717341", "taskId": 30}
