@@ -7,7 +7,7 @@ setup(
     author_email='s.adaszewski@gmail.com',
     url='https://github.com/sadaszewski/pydeclarative',
     packages=['pydeclarative'],
-    license='The GNU General Public License v3.0',
+    license='The GNU Lesser General Public License v3.0',
     description='PyDeclarative is a QML-like declarative web application development framework',
     long_description='PyDeclarative is a QML-like declarative web application development framework',
     scripts=[],
