@@ -23,8 +23,9 @@ Here is how a citation could look like in Bibtex format for the moment:
 }
 ```
 
-I am working on publishing the paper on arXiv. If/when that happens, I would appreciate
-changing the references to point to that location.
+I am working on publishing the paper on arXiv and beyond. If/when that happens,
+I would appreciate updating the references to point to the most high profile
+location (hopefully a peer-reviewed journal).
 
 Here is the [OpenTimeStamps](https://opentimestamps.org/) timestamp for the article PDF:
 [timestamp](paper/pydeclarative_paper_adaszewski_2024_final_20240530_timestamped.pdf.ots).
