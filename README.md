@@ -10,22 +10,22 @@ Injection/Inversion of Control mechanisms and refactoring capabilities.
 ## Citation
 
 If you are using this software and would be so kind to please cite
-the [PyDeclarative paper](paper/pydeclarative_paper_adaszewski_2024_final_20240530_timestamped.pdf)
+the [PyDeclarative paper](https://zenodo.org/records/12497154)
 in your research - that would be great.
 
-Here is how a citation could look like in Bibtex format for the moment:
+Here is how a citation could look like in Bibtex format:
 ```
-@misc{adaszewski_pydeclarative_2024,
-  author = {Adaszewski, Stanislaw},
-  title = {{PyDeclarative: a declarative Single Page Application framework for Python}},
-  year = {2024},
-  howpublished = {\url{https://github.com/sadaszewski/pydeclarative}}
+@article{adaszewski2024pydeclarative,
+  author  = "Adaszewski, S.",
+  title   = "PyDeclarative: a Declarative Single Page Application Framework for Python",
+  journal = "Zenodo",
+  year    = 2024,
+  doi     = "10.5281/zenodo.12497154"
 }
 ```
 
-I am working on publishing the paper on arXiv and beyond. If/when that happens,
-I would appreciate updating the references to point to the most high profile
-location (hopefully a peer-reviewed journal).
+I am working on publishing the paper in a peer-reviewed journal.
 
-Here is the [OpenTimeStamps](https://opentimestamps.org/) timestamp for the article PDF:
+Here is the very first version ever to leave my PC - [PyDeclarative paper](paper/pydeclarative_paper_adaszewski_2024_final_20240530_timestamped.pdf)
+and the [OpenTimeStamps](https://opentimestamps.org/) timestamp for the PDF:
 [timestamp](paper/pydeclarative_paper_adaszewski_2024_final_20240530_timestamped.pdf.ots).
