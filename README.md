@@ -7,6 +7,8 @@ programming with minimal added verbosity; and compositional syntactic
 uniformity which delivers unparalleled flexibility in Dependency
 Injection/Inversion of Control mechanisms and refactoring capabilities.
 
+Tutorial 01 (Hello World): https://www.youtube.com/watch?v=kCFX8BP7Mls
+
 ## Citation
 
 If you are using this software and would be so kind to please cite
